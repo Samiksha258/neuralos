@@ -250,8 +250,6 @@ Deep Saffron
 
 # Built For
 
-Frontend Engineering Hackathon 2026
-
 Designed and developed with a focus on frontend architecture, responsive engineering, accessibility, performance, and enterprise-grade user experience.
 
 ---
