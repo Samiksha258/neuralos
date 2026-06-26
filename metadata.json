@@ -1,0 +1,6 @@
+{
+  "name": "Aether AI Landing Page",
+  "description": "Premium SaaS landing page for Aether AI, an autonomous model routing and multi-agent coordination automation grid.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

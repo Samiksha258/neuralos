@@ -1,0 +1,105 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+export interface PriceTier {
+  id: string;
+  name: string;
+  description: string;
+  baseMonthlyUSD: number;
+  features: string[];
+  cta: string;
+  popular?: boolean;
+}
+
+export const PRICING_TIERS: PriceTier[] = [
+  {
+    id: "starter",
+    name: "Starter Apex",
+    description: "Essential AI execution engine for early-stage automated operations.",
+    baseMonthlyUSD: 29,
+    features: [
+      "10,000 automated runs / mo",
+      "Standard LLM routing latency",
+      "Single-agent autonomy logs",
+      "Community support access",
+      "Standard API rate limits"
+    ],
+    cta: "Launch Engine"
+  },
+  {
+    id: "pro",
+    name: "Professional Core",
+    description: "High-performance orchestration for scaling automation teams.",
+    baseMonthlyUSD: 79,
+    features: [
+      "150,000 automated runs / mo",
+      "Priority lowest-latency routing",
+      "Multi-agent swarm workflows",
+      "Dynamic cost-to-latency balance",
+      "24/7 dedicated system response",
+      "Custom system telemetry access"
+    ],
+    cta: "Deploy Core",
+    popular: true
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise Grid",
+    description: "Maximum bandwidth and isolated high-security system integration.",
+    baseMonthlyUSD: 199,
+    features: [
+      "Unlimited system runs",
+      "Guaranteed priority latency SLAs",
+      "Private dedicated model routing",
+      "Military-grade hyper-secure guardrails",
+      "Custom SLA & enterprise compliance",
+      "Dedicated solutions architects"
+    ],
+    cta: "Request Grid Access"
+  }
+];
+
+export const CURRENCIES = {
+  USD: { symbol: "$", code: "USD", multiplier: 1.0 },
+  EUR: { symbol: "€", code: "EUR", multiplier: 0.92 },
+  INR: { symbol: "₹", code: "INR", multiplier: 83.5 }
+};
+
+export const ANNUAL_DISCOUNT = 0.8; // 20% discount
+
+/**
+ * Calculates the monthly price and annual total price for a given tier, currency, and cycle.
+ */
+export function calculatePrice(
+  baseMonthlyUSD: number,
+  currencyCode: keyof typeof CURRENCIES,
+  billingCycle: "monthly" | "annual"
+) {
+  const currency = CURRENCIES[currencyCode];
+  const rateMultiplier = currency.multiplier;
+  
+  // Base cost in local currency
+  const localBase = baseMonthlyUSD * rateMultiplier;
+  
+  if (billingCycle === "annual") {
+    // Apply 20% discount
+    const monthlyRate = Math.round(localBase * ANNUAL_DISCOUNT);
+    const yearlyTotal = monthlyRate * 12;
+    return {
+      monthlyRate,
+      yearlyTotal,
+      formattedRate: `${currency.symbol}${monthlyRate.toLocaleString()}`,
+      formattedTotal: `${currency.symbol}${yearlyTotal.toLocaleString()}`
+    };
+  } else {
+    const monthlyRate = Math.round(localBase);
+    return {
+      monthlyRate,
+      yearlyTotal: monthlyRate * 12,
+      formattedRate: `${currency.symbol}${monthlyRate.toLocaleString()}`,
+      formattedTotal: null
+    };
+  }
+}
