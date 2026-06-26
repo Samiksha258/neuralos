@@ -13,9 +13,7 @@ Built as part of a national frontend engineering hackathon, the project emphasiz
 
 🔗 Live Website: https://your-vercel-link.vercel.app
 
-🎥 Demo Video: https://your-demo-video-link
-
-📂 GitHub Repository: https://github.com/username/neuralos
+📂 GitHub Repository: https://github.com/Samiksha258/neuralos
 
 ---
 
