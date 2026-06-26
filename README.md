@@ -189,28 +189,6 @@ Initial page animation completes within 500ms.
 
 ---
 
-# Getting Started
-
-Clone the repository
-
-```bash
-git clone https://github.com/username/neuralos.git
-```
-
-Install dependencies
-
-```bash
-npm install
-```
-
-Run locally
-
-```bash
-npm run dev
-```
-
----
-
 # Lighthouse Goals
 
 | Category | Target |
